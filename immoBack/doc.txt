@@ -1,0 +1,34 @@
+Utile
+
+dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer --version 7.0.0
+dotnet add package System.IdentityModel.Tokens.Jwt
+dotnet add package Microsoft.IdentityModel.Tokens
+
+curl -X [Http] -H [type] -d [data] 
+
+fONCTION POSTGRESQL
+
+CREATE OR REPLACE FUNCTION function_name(parameter_name parameter_type, ...)
+RETURNS return_type AS $$
+DECLARE
+    -- Variable declarations
+    variable_name variable_type;
+BEGIN
+    -- Function logic goes here
+    -- Example of SQL statements
+    SELECT some_column INTO variable_name
+    FROM some_table
+    WHERE some_condition;
+
+    -- Example of conditional logic
+    IF some_condition THEN
+        -- Do something
+    ELSE
+        -- Do something else
+    END IF;
+
+    -- Return a value (if applicable)
+    RETURN variable_name;
+END;
+$$ LANGUAGE plpgsql;
+
