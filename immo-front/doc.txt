@@ -1,0 +1,46 @@
+<template>
+  <div>
+    <h2>Client Page</h2>
+    <p v-if="loading">Loading...</p>
+    <p v-if="error">{{ error }}</p>
+    <div v-if="data">
+      <p>{{ data }}</p>
+    </div>
+  </div>
+</template>
+
+<script>
+import { ref, onMounted } from 'vue';
+import ApiService from '../services/ApiService';
+
+export default {
+  setup() {
+    const data = ref(null);
+    const loading = ref(false);
+    const error = ref(null);
+
+    const fetchData = async () => {
+      loading.value = true;
+      error.value = null;
+      try {
+        const response = await ApiService.get('/client-data');
+        data.value = response.data.data;
+      } catch (err) {
+        error.value = 'Failed to load data.';
+      } finally {
+        loading.value = false;
+      }
+    };
+
+    onMounted(() => {
+      fetchData();
+    });
+
+    return {
+      data,
+      loading,
+      error,
+    };
+  },
+};
+</script>
